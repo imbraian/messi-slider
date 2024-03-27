@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Pixelify+Sans:wght@400..700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0px 35px;
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(to left top, #004d98, #a50044);
+}
+
+.wrapper {
+  position: relative;
+  max-width: 1100px;
+  width: 100%;
+  & i {
+    font-size: 1.25rem;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 50px;
+    background: #fff;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 3px 6px #00000023;
+  }
+  & i:first-child {
+    left: -22px;
+  }
+  & i:last-child {
+    right: -22px;
+  }
+  .carousel {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% / 3) - 12px);
+    gap: 15px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: 0;
+    .card,
+    .img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .card {
+      flex-direction: column;
+      height: 340px;
+      background: #fff;
+      list-style: none;
+      border-radius: 10px;
+      padding-bottom: 15px;
+      cursor: grab;
+      user-select: none;
+      scroll-snap-align: start;
+      .img {
+        width: 148px;
+        height: 148px;
+        background: linear-gradient(to left top, #004d98, #a50044);
+        border-radius: 50%;
+        & img {
+          width: 140px;
+          height: 140px;
+          object-fit: cover;
+          border-radius: 50%;
+          border: 4px solid #fff;
+        }
+      }
+      & h2 {
+        font-size: 1.5rem;
+        margin: 25px 5px;
+      }
+      & span {
+        color: #6a6b78;
+        font-size: 1.3rem;
+        text-align: center;
+      }
+    }
+  }
+  .carousel.no-transition {
+    scroll-behavior: auto;
+  }
+  .carousel.dragging {
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+  }
+  .carousel::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media screen and (width < 900px) {
+  .carousel {
+    grid-auto-columns: calc((100% / 2) - 9px);
+  }
+}
+
+@media screen and (width < 600px) {
+  .carousel {
+    grid-auto-columns: 100%;
+  }
+}
